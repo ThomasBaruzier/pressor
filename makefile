@@ -6,7 +6,7 @@ SDIR=src
 LDIR=lib
 
 _DEPS = utils.h
-_SRC = main.o help.o
+_SRC = main.o help.o loglevels.o
 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
