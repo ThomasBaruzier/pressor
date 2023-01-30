@@ -13,7 +13,7 @@ For now, this full rewrite is just at its beginning, so please be patient before
 - Include or exclude extensions for specific media types
 - Toggle the search inside subfolders or hidden files/folders
 - Search by extensions, file content (mime type), or both
-- Chose the compression codec for images (JPG, QIO, AVIF, JXL)
+- Chose the compression codec for images (JPG, QOI, AVIF, JXL)
 - Chose the compression codec for videos (x264, x265, VP9, AV1, VVC)
 - Chose the compression codec for audios (MP3, OPUS)
 - Chose photo/video/video/video audio quality, compression efficiency and bit depth per codec, while providing the best default values available.
