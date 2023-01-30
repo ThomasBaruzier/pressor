@@ -5,8 +5,8 @@ CFLAGS=-I$(IDIR)
 SDIR=src
 LDIR=lib
 
-_DEPS = utils.h
-_SRC = main.o help.o loglevels.o
+_DEPS = help.h loglevels.h args.h
+_SRC = main.o help.o loglevels.o args.o
 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
@@ -16,6 +16,9 @@ $(SDIR)/%.o: %.c $(DEPS)
 
 pressor: $(SRC)
 	$(CC) -o $@ $^ $(CFLAGS)
+
+fast:
+	gcc -I./include -o pressor src/*.c
 
 clean:
 	rm -f $(SDIR)/*.o pressor

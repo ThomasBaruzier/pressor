@@ -1,26 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "utils.h"
+#include <string.h>
+#include "loglevels.h"
+#include "help.h"
+#include "args.h"
 
 int main(int argc, char **argv)
 {
 	int loglevel = 3, colors = 1;
-    int p[2] = {loglevel, colors}; // parameters
+    int p[] = {loglevel, colors};
+    int ret;
 
     if(argc == 1) {
-        error("No arguments provided", p);
+        error(p, "No arguments provided", NULL);
         help("basic", argv[0]);
         exit(1);
     }
 
-    for(int i=1; i < argc; i++)
-        printf("Argument %d : %s\n", i, argv[i]);
-
-    success("test success", p);
-    error("test error", p);
-    warn("test warning", p);
-    info("test info", p);
-    debug("test debug", p);
+    ret = parseArgs(argc, argv);
+    if(ret) error(p, "Argument does not exist", argv[ret]);
 
     exit(0);
 }

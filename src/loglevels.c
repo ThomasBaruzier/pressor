@@ -1,47 +1,54 @@
 #include <stdio.h>
 #include <string.h>
 
-// params[0] = loglevel
-// params[1] = colors
-
-// loglevels
-// 0 = errors
-// 1 = warnings
-// 2 = infos
-// 3 = debug
-
-void success(char *success, int *params)
+void logMess(char type, int color, char *message, char *details)
 {
-    if(params[1]) fprintf(stderr, "\033[1;32mSUCCESS : %s\033[1;0m\n", success);
-    else fprintf(stderr, "SUCCESS : %s\n", success);
-}
+    char finalMess[128] = {'\0'};
 
-void error(char *error, int *params)
-{
-    if(params[1]) fprintf(stderr, "\033[1;31mERROR : %s\033[1;0m\n", error);
-    else fprintf(stderr, "ERROR : %s\n", error);
-}
-
-void warn(char *warn, int *params)
-{
-    if(params[0] >= 1) {
-        if(params[1]) fprintf(stderr, "\033[1;33mWARNING : %s\033[1;0m\n", warn);
-        else fprintf(stderr, "WARNING : %s\n", warn);
+    if(color) {
+        switch (type) {
+            case 's': strcat(finalMess, "\033[1;32m"); break;
+            case 'e': strcat(finalMess, "\033[1;31m"); break;
+            case 'w': strcat(finalMess, "\033[1;33m"); break;
+            case 'i': strcat(finalMess, "\033[1;34m"); break;
+            case 'd': strcat(finalMess, "\033[1;35m"); break;
+        }
     }
+    
+    switch (type) {
+        case 's': strcat(finalMess, "SUCCESS : "); break;
+        case 'e': strcat(finalMess, "ERROR : "); break;
+        case 'w': strcat(finalMess, "WARNING : "); break;
+        case 'i': strcat(finalMess, "INFO : "); break;
+        case 'd': strcat(finalMess, "DEBUG : "); break;
+    }        
+
+    strcat(finalMess, message);
+
+    if(details != NULL) {
+        strcat(finalMess, " : ");
+        strcat(finalMess, details);
+    }
+
+    printf("%s\033[0m\n", finalMess);
 }
 
-void info(char *info, int *params)
-{
-    if(params[0] >= 2) {
-        if(params[1]) fprintf(stderr, "\033[1;34mINFO : %s\033[1;0m\n", info);
-        else fprintf(stderr, "INFO : %s\n", info);
-    }
+void success(int *params, char *message, char *details) {
+    logMess('s', params[1], message, details);
 }
 
-void debug(char *debug, int *params)
-{
-    if(params[0] >= 3) {
-        if(params[1]) fprintf(stderr, "\033[1;35mDEBUG : %s\033[1;0m\n", debug);
-        else fprintf(stderr, "DEBUG : %s\n", debug);
-    }
+void error(int *params, char *message, char *details) {
+    logMess('e', params[1], message, details);
+}
+
+void warning(int *params, char *message, char *details) {
+    if(params[0] >= 1) logMess('w', params[1], message, details);
+}
+
+void info(int *params, char *message, char *details) {
+    if(params[0] >= 2) logMess('i', params[1], message, details);
+}
+
+void debug(int *params, char *message, char *details) {
+    if(params[0] >= 3) logMess('d', params[1], message, details);
 }
