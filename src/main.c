@@ -18,7 +18,10 @@ int main(int argc, char **argv)
     }
 
     ret = parseArgs(argc, argv);
-    if(ret) error(p, "Argument does not exist", argv[ret]);
+    if(ret) {
+        error(p, "Argument does not exist", argv[ret]);
+        exit(1);
+    }
 
     exit(0);
 }
