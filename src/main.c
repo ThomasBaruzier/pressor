@@ -23,5 +23,11 @@ int main(int argc, char **argv)
         exit(1);
     }
 
+    success(p, "Page not found", "404");
+    error(p, "Page not found", "404");
+    warn(p, "Page not found", "404");
+    info(p, "Page not found", "404");
+    debug(p, "Page not found", "404");
+
     exit(0);
 }

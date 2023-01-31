@@ -7,11 +7,11 @@ void logMess(char type, int color, char *message, char *details)
 
     if(color) {
         switch (type) {
-            case 's': strcat(finalMess, "\033[1;32m"); break;
-            case 'e': strcat(finalMess, "\033[1;31m"); break;
-            case 'w': strcat(finalMess, "\033[1;33m"); break;
-            case 'i': strcat(finalMess, "\033[1;34m"); break;
-            case 'd': strcat(finalMess, "\033[1;35m"); break;
+            case 's': strcat(finalMess, "\033[32m"); break;
+            case 'e': strcat(finalMess, "\033[31m"); break;
+            case 'w': strcat(finalMess, "\033[33m"); break;
+            case 'i': strcat(finalMess, "\033[34m"); break;
+            case 'd': strcat(finalMess, "\033[35m"); break;
         }
     }
     
@@ -41,7 +41,7 @@ void error(int *params, char *message, char *details) {
     logMess('e', params[1], message, details);
 }
 
-void warning(int *params, char *message, char *details) {
+void warn(int *params, char *message, char *details) {
     if(params[0] >= 1) logMess('w', params[1], message, details);
 }
 
