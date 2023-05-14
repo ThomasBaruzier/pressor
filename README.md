@@ -12,7 +12,7 @@ This is the previous version taken from [github.com/tyravex/pressor](https://git
 If you want to try pressor before the official version comes out, this is the way.
 A lot of features are still missing but it's usable for most cases.
 
-### Documentation:
+### Documentation
 
 ```
 USAGE : ./pressor.sh <input(s)> <output> [arguments]
@@ -91,9 +91,29 @@ Other options :
   -L, --loglevel <0|1|2|info|warning|error>
 ```
 
-### Demo:
+### Demo
 
-[soon]
+![image](https://github.com/ThomasBaruzier/pressor/assets/119688458/91f09253-2410-48fa-97f4-32844ef804da)
+
+### Examples
+
+#### Input (600kb, 1920x804):
+
+![input](https://github.com/ThomasBaruzier/pressor/assets/119688458/aed44085-264d-43ee-b759-6fa66b5a93ed)
+
+#### Output (60kb, 1920x804):
+
+![output](https://cdn.3z.ee/Github-assets/Pressor/sunset.avif)
+[Credits - Louis Coyle - Dribbble](https://dribbble.com/louiscoyle)
+
+#### Input (7mb, 2844x4282) :
+
+![input](https://github.com/ThomasBaruzier/pressor/assets/119688458/b36bf2c1-d6fd-41f3-b496-53479f8f45cd)
+
+#### Output (80kb, 2844x4282):
+
+![output](https://cdn.3z.ee/Github-assets/Pressor/camera-80kb.avif)
+[Credits - EnisuVI - Reddit](https://www.reddit.com/user/EnisuVI/)
 
 ## Planned Features
 - Take as input a file or directory
