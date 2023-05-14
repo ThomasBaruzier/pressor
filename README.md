@@ -4,9 +4,15 @@ Pressor is a C program trying to solve the storage issues caused by inefficientl
 
 Based on previous experience, the prior version of pressor (developed [here](https://github.com/tyravex/pressor)) was able to compress a photo gallery by a factor of ~8 (40gb to 5gb), with minimal loss in quality, thanks to new clever and efficient codecs (AV1, AVIF and JXL to name a few) and superior encoding complexity.
 
-For now, this full rewrite is just at its beginning, so please be patient before I release the first version.
+For now, this full rewrite is just at its beginning, so please be patient before I release the first version (likely this summmer).
 
-## Features
+## pressor.sh
+
+This is the previous version taken from [github.com/tyravex/pressor](https://github.com/tyravex/pressor).
+If you want to try pressor before the official version comes out, this is the way.
+A lot of features are still missing but it's usable for most cases.
+
+## Planned Features
 - Take as input a file or directory
 - Toggle videos/photos/audios compression
 - Chose the output strategy for multiple files (tree or single folder)
