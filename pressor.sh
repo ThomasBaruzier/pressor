@@ -768,40 +768,32 @@ compress() {
   else unset overwrite; fi
 
   for input in "${imageList[@]}"; do
+    [ ! -f "$input" ] && continue
     echo -e "\e[32mPIC : $input"
     case "$imageCodec" in
       jpg)
-        [[ -n "$jpgQuality" ]] && jpgQuality="-q:v $jpgQuality"
-        [[ -n "$jpgEfficiency" ]] && jpgEfficiency="-preset $jpgEfficiency"
         ffmpeg -hide_banner -loglevel error "$overwrite" \
-        -i "$input" $jpgQuality $jpgEfficiency "${input%.*}-pressor.jpg"
+        -i "$input" -q:v "$jpgQuality" -preset "$jpgEfficiency" "${input%.*}-pressor.jpg"
         echo -e "\e[36mRESULT : $(du -h $input | cut -f1) > $(du -h ${input%.*}-pressor.jpg | cut -f1)\e[0m";;
       avif)
-        [[ -n "$avifMinQuality" ]] && avifMinQuality="--min ${avifMinQuality}"
-        [[ -n "$avifMaxQuality" ]] && avifMaxQuality="--max ${avifMaxQuality}"
-        [[ -n "$avifEfficiency" ]] && avifEfficiency="--speed ${avifEfficiency}"
-        [[ -n "$avifDepth" ]] && avifDepth="--depth ${avifDepth}"
-        # ffmpeg -hide_banner -loglevel error -i "$input" -f yuv4mpegpipe - | \
-        avifenc $avifEfficiency $avifMinQuality $avifMaxQuality $avifDepth --jobs "$threads" "$input" "${input%.*}-pressor.avif"
-        echo -e "\e[36mRESULT : $(du -h $input | cut -f1) > $(du -h ${input%.*}-pressor.avif | cut -f1)\e[0m";;
+        ffmpeg -strict -1 -hide_banner -loglevel error -i "$input" -pix_fmt yuv444p -f yuv4mpegpipe - | \
+        avifenc --speed "$avifEfficiency" --min "$avifMinQuality" --max "$avifMaxQuality" --depth "$avifDepth" --jobs "$threads" --stdin "${input%.*}-pressor.avif"
+        echo -e "\e[36mRESULT : $(du -h "$input" | cut -f1) > $(du -h "${input%.*}"-pressor.avif | cut -f1)\e[0m";;
       *) echo "> $imageCodec is not implemented yet";;
     esac
   done
 
   for input in "${videoList[@]}"; do
+    [ ! -f "$input" ] && continue
     echo -e "\e[33mVID : $input"
     case "$videoCodec" in
       x264)
-        [[ -n "$x264Quality" ]] && x264Quality="-crf $x264Quality"
-        [[ -n "$x264Efficiency" ]] && x264Efficiency="-preset $x264Efficiency"
         ffmpeg -hide_banner -loglevel error "$overwrite" -i "$input" \
-        -c:v libx264 $x264Quality $x264Efficiency "${input%.*}-pressor.mp4" && \
+        -c:v libx264 -crf "$x264Quality" -preset "$x264Efficiency" "${input%.*}-pressor.mp4" && \
         echo -e "\e[36mRESULT : $(du -h $input | cut -f1) > $(du -h ${input%.*}-pressor.mp4 | cut -f1)\e[0m";;
       x265)
-        [[ -n "$x265Quality" ]] && x265Quality="-crf $x265Quality"
-        [[ -n "$x265Efficiency" ]] && x265Efficiency="-preset $x265Efficiency"
         ffmpeg -hide_banner -loglevel error "$overwrite" -i "$input" \
-        -c:v libx265 $x265Quality $x265Efficiency "${input%.*}-pressor.mp4" && \
+        -c:v libx265 -crf "$x265Quality" -preset "$x265Efficiency" "${input%.*}-pressor.mp4" && \
         echo -e "\e[36mRESULT : $(du -h $input | cut -f1) > $(du -h ${input%.*}-pressor.mp4 | cut -f1)\e[0m";;
       vp9)
         ffmpeg -y -i "$input" -loglevel error -stats \
@@ -844,6 +836,7 @@ compress() {
   done
 
   for input in "${audioList[@]}"; do
+    [ ! -f "$input" ] && continue
     echo -e "\e[35mAUD : $input"
     case "$audioCodec" in
 
