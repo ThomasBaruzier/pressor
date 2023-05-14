@@ -101,7 +101,7 @@ Other options :
 
 ![input](https://github.com/ThomasBaruzier/pressor/assets/119688458/aed44085-264d-43ee-b759-6fa66b5a93ed)
 
-#### Output (60kb, 1920x804):
+#### Output (60kb, 1920x804, 10x smaller):
 
 ![output](https://cdn.3z.ee/Github-assets/Pressor/sunset.avif)
 [Credits - Louis Coyle - Dribbble](https://dribbble.com/louiscoyle)
@@ -110,7 +110,7 @@ Other options :
 
 ![input](https://github.com/ThomasBaruzier/pressor/assets/119688458/b36bf2c1-d6fd-41f3-b496-53479f8f45cd)
 
-#### Output (80kb, 2844x4282):
+#### Output (80kb, 2844x4282, 87x smaller):
 
 ![output](https://cdn.3z.ee/Github-assets/Pressor/camera-80kb.avif)
 [Credits - EnisuVI - Reddit](https://www.reddit.com/user/EnisuVI/)
