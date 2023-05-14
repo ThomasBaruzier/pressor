@@ -133,4 +133,4 @@ Other options :
 #### Output (80kb, 2844x4282, 87x smaller):
 
 ![output](https://cdn.3z.ee/Github-assets/Pressor/camera-80kb.avif)
-[Credits - EnisuVI - Reddit](https://www.reddit.com/user/EnisuVI/)
+[Credits - EnisuVI - Instagram](https://www.instagram.com/p/CrEHLc4sa3y)
