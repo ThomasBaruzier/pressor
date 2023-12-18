@@ -123,7 +123,7 @@ Other options :
 
 #### Output (60kb, 1920x804, 10x smaller):
 
-![output](https://cdn.3z.ee/Github-assets/Pressor/sunset.avif)
+![output](https://files.3z.ee/github/pressor/sunset.avif)
 [Credits - Louis Coyle - Dribbble](https://dribbble.com/louiscoyle)
 
 #### Input (7mb, 2844x4282) :
@@ -132,5 +132,5 @@ Other options :
 
 #### Output (80kb, 2844x4282, 87x smaller):
 
-![output](https://cdn.3z.ee/Github-assets/Pressor/camera-80kb.avif)
+![output](https://files.3z.ee/github/pressor/camera-80kb.avif)
 [Credits - EnisuVI - Instagram](https://www.instagram.com/p/CrEHLc4sa3y)
